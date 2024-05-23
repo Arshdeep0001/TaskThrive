@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand"><b>TaskThrive</b></a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="#">Home</a></li>
+                <li class="navbar-item"><a href="#pending-filter">Pending Tasks</a></li>
+                <li class="navbar-item"><a href="#completed-filter">Completed Tasks</a></li>
+                <li class="navbar-item"><a href="#">Change Theme</a></li>
+                <li class="navbar-item">
+                    <label class="theme-switch">
+                        <input type="checkbox" id="theme-toggle" onchange="toggleTheme()">
+                        <span class="slider"></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to TaskThrive</h1>
+
+        <input type="text" id="search-bar" placeholder="Search Pending task" onkeyup="searchTasks()">
+
+        <div class="task-section">
+            <h2>Pending Tasks</h2>
+            <select id="pending-filter" onchange="filterTasks('pending')">
+                <option value="all">All Categories</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+            </select>
+            <select id="pending-sort" onchange="sortTasks('pending')">
+                <option value="default">Sort by</option>
+                <option value="date">Due Date</option>
+                <option value="category">Category</option>
+            </select>
+            <button id="pending-today-btn" onclick="toggleTodayTasks()">Pending Today</button>
+            <ul id="pending-tasks">
+                <!-- Pending tasks will be added here -->
+            </ul>
+            <input type="text" id="new-task" placeholder="New Task">
+            <input type="date" id="task-date">
+            <select id="task-category">
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+            </select>
+            <input type="time" id="task-time">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <div class="task-section">
+            <h2>Completed Tasks</h2>
+            <select id="completed-filter" onchange="filterTasks('completed')">
+                <option value="all">All Categories</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+            </select>
+            <select id="completed-sort" onchange="sortTasks('completed')">
+                <option value="default">Sort by</option>
+                <option value="date">Due Date</option>
+                <option value="category">Category</option>
+            </select>
+            <ul id="completed-tasks">
+                <!-- Completed tasks will be moved here -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
